@@ -9,7 +9,7 @@ import numpy as np
 #     word_str += "))"
 #     return word_str
 
-# Сохранение в формат Latex
+# Save in Latex format
 def matrix_to_word(matrix):
     word_str = "\left(\\begin{matrix}"
 
@@ -20,7 +20,7 @@ def matrix_to_word(matrix):
     word_str += "\\end{matrix}\\right)"
     return word_str
 
-# Генерация матриц A, B и C
+# Generate A, B и C matrix
 def gen_task_1(A_size, B_size, range):
     A = np.random.randint(range[0], range[1], size=A_size)  # Matrix A of size 3x2
     B = np.random.randint(range[0], range[1], size=B_size)  # Matrix B of size 3x3
