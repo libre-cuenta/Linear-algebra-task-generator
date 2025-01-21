@@ -36,7 +36,6 @@ def solve_for_x(A, b, x_n):
 #             eq += "@"
 #     return eq + ")┤"
 
-# Make system of equations
 def makesystem(A, b):
     m, n = A.shape
     eq = " "
@@ -56,7 +55,6 @@ def makesystem(A, b):
         eq += str_ + f" = {b[i]}\n"
     return eq
 
-# Make system and solution
 def gen_task_2(A_size, range, x_n):
     A, b = None, None
     while True:

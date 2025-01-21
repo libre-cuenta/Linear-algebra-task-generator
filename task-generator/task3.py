@@ -16,7 +16,6 @@ def solve_for_x3(A, b):
     x3 = f"{det_A3}/{det_A}"   # Value of x3 by Cramer's formula
     return det_A, det_A3, x3
 
-# Make system of equations
 def makesystem(A, b):
     m, n = A.shape
     eq = " "
@@ -36,7 +35,6 @@ def makesystem(A, b):
         eq += str_ + f" = {b[i]}\n"
     return eq
 
-# Save task in Latex format
 def matrix_to_word(matrix):
     word_str = "A^{-1}= \left(\\begin{matrix}"
 
@@ -47,14 +45,12 @@ def matrix_to_word(matrix):
     word_str += "\\end{matrix}\\right) \n"
     return word_str
 
-# Save solution in Latex format
 def matrix_to_word2(matrix):
     word_str = "X= \left(\\begin{matrix}"
     word_str += " \\\\ ".join(map(str, matrix[:]))
     word_str += "\\end{matrix}\\right)"
     return word_str
 
-# Make system and solution
 def gen_task_3(A_size, range):
     A, b = None, None
     while True:
@@ -64,10 +60,12 @@ def gen_task_3(A_size, range):
         
     # rat_A = np.array([[Fraction(a).limit_denominator() for a in row] for row in A], dtype=int)
     rat_A = np.array(A, dtype=int)
+    inverse_A = np.linalg.inv(rat_A)
+    inverse_A = np.round(inverse_A, decimals=5)
     # rat_b = np.array([Fraction(bi).limit_denominator() for bi in b], dtype=int)
     rat_b = np.array(b, dtype=int)
     system = makesystem(A, b)
-    A_inv = matrix_to_word(np.linalg.inv(rat_A))
-    X = matrix_to_word2(np.dot(np.linalg.inv(rat_A), rat_b))
+    A_inv = matrix_to_word(inverse_A)
+    X = matrix_to_word2(np.round(np.dot(inverse_A, rat_b), 5))
     return (system, A_inv, X)
 

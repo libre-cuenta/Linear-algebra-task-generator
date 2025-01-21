@@ -16,7 +16,6 @@ def solve_for_x3(A, b):
     x3 = f"{det_A3}/{det_A}"   # Value of x3 by Cramer's formula
     return det_A, det_A3, x3
 
-# Make system of equations
 def makesystem(A, b):
     m, n = A.shape
     eq = " "
@@ -36,7 +35,6 @@ def makesystem(A, b):
         eq += str_ + f" = {b[i]}\n"
     return eq
 
-# Save task in Latex format
 def matrix_to_word(matrix):
     word_str = "\left(\\begin{matrix}"
 
@@ -56,7 +54,6 @@ def matrix_to_word(matrix):
 #     word_str += " ))"
 #     return word_str
 
-# Generate A, B and C matrix. Find X
 def gen_task_4(A_size, B_size, C_size, range):
     A, B, C = None, None, None
     while True:
@@ -67,11 +64,15 @@ def gen_task_4(A_size, B_size, C_size, range):
     rat_A = np.array(A, dtype=int)  # Convert to rational
     rat_B = np.array(B, dtype=int)
     rat_C = np.array(C, dtype=int)
+    inverse_A = np.linalg.inv(rat_A)
+    inverse_A = np.round(inverse_A, decimals=5)
+    inverse_B = np.linalg.inv(rat_B)
+    inverse_B = np.round(inverse_B, decimals=5)
 
-    A_inv = "A^{-1}="+matrix_to_word(np.linalg.inv(rat_A)).replace("//", "/").replace("/1 ", " ")+"\n"
-    B_inv = "B^{-1}="+matrix_to_word(np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")+"\n"
+    A_inv = "A^{-1}="+matrix_to_word(inverse_A).replace("//", "/").replace("/1 ", " ")+"\n"
+    B_inv = "B^{-1}="+matrix_to_word(inverse_B).replace("//", "/").replace("/1 ", " ")+"\n"
 
-    X = "X="+matrix_to_word(np.linalg.inv(rat_A) @ rat_C @ np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")+"\n"
+    X = "X="+matrix_to_word(np.round(inverse_A @ rat_C @ inverse_B, 5)).replace("//", "/").replace("/1 ", " ")+"\n"
     system = f"{matrix_to_word(A)}∙X∙{matrix_to_word(B)}={matrix_to_word(C)} \n"
 
     return (system, A_inv, B_inv, X)
