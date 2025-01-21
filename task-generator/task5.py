@@ -7,6 +7,7 @@ def generate_system(A_size, range):
     b = np.random.randint(range[0], range[1], A_size[0])
     return A, b
 
+# Make system of equations
 def makesystem(A, b):
     m, n = A.shape
     eq = " "
@@ -26,17 +27,18 @@ def makesystem(A, b):
         eq += str_ + f" = {b[i]}\n"
     return eq
 
+# Save matrix in Latex format
 def matrix_to_word(matrix):
     word_str = "\left(\\begin{matrix}"
     word_str += " \\\\ ".join(map(str, matrix[:]))
-    word_str += "\\end{matrix}\\right)"
+    word_str += "\\\\\\end{matrix}\\right)"
     return word_str
 
-
+# Save solution in Latex format
 def vec_to_word(vec):
     word_str = "\left(\\begin{matrix}"
     word_str += " \\\\ ".join(map(str, vec))
-    word_str += "\\end{matrix}\\right)"
+    word_str += "\\\\\\end{matrix}\\right)"
     return word_str
 
 # def gen_task_5(A_size, range, rank_A, rank_AB):
@@ -73,6 +75,7 @@ def nullspace(A):
     null_space_dim = np.sum(S < 1e-10)
     return Vh.T[:, -null_space_dim:]
 
+# Generate task and solution
 def gen_task_5(A_size, range_, rank_A, rank_AB):
     A, b = None, None
     
