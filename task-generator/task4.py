@@ -68,10 +68,10 @@ def gen_task_4(A_size, B_size, C_size, range):
     rat_B = np.array(B, dtype=int)
     rat_C = np.array(C, dtype=int)
 
-    A_inv = "A^{-1}="+matrix_to_word(np.linalg.inv(rat_A)).replace("//", "/").replace("/1 ", " ")
-    B_inv = "B^{-1}="+matrix_to_word(np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")
+    A_inv = "A^{-1}="+matrix_to_word(np.linalg.inv(rat_A)).replace("//", "/").replace("/1 ", " ")+"\n"
+    B_inv = "B^{-1}="+matrix_to_word(np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")+"\n"
 
-    X = "X="+matrix_to_word(np.linalg.inv(rat_A) @ rat_C @ np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")
+    X = "X="+matrix_to_word(np.linalg.inv(rat_A) @ rat_C @ np.linalg.inv(rat_B)).replace("//", "/").replace("/1 ", " ")+"\n"
     system = f"{matrix_to_word(A)}∙X∙{matrix_to_word(B)}={matrix_to_word(C)} \n"
 
     return (system, A_inv, B_inv, X)
