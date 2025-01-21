@@ -17,7 +17,7 @@ def matrix_to_word(matrix):
         word_str += "&".join(map(str, matrix[i, :]))
         if i < matrix.shape[0] - 1:
             word_str += "\\\\"
-    word_str += "\\end{matrix}\\right)"
+    word_str += "\\\\\\end{matrix}\\right)"
     return word_str
 
 # Generate A, B matrix
