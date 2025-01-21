@@ -16,6 +16,7 @@ def solve_for_x3(A, b):
     x3 = f"{det_A3}/{det_A}"   # Value of x3 by Cramer's formula
     return det_A, det_A3, x3
 
+# Make system of equations
 def makesystem(A, b):
     m, n = A.shape
     eq = " "
@@ -35,6 +36,7 @@ def makesystem(A, b):
         eq += str_ + f" = {b[i]}\n"
     return eq
 
+# Save task in Latex format
 def matrix_to_word(matrix):
     word_str = "A^{-1}= \left(\\begin{matrix}"
 
@@ -45,12 +47,14 @@ def matrix_to_word(matrix):
     word_str += "\\end{matrix}\\right) \n"
     return word_str
 
+# Save solution in Latex format
 def matrix_to_word2(matrix):
     word_str = "X= \left(\\begin{matrix}"
     word_str += " \\\\ ".join(map(str, matrix[:]))
     word_str += "\\end{matrix}\\right)"
     return word_str
 
+# Make system and solution
 def gen_task_3(A_size, range):
     A, b = None, None
     while True:
